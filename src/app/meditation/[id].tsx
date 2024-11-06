@@ -7,6 +7,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import {MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 
 export default function MeditationDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -43,11 +44,26 @@ export default function MeditationDetails() {
         <FontAwesome6 name="play" size={24} color="snow" />
       </TouchableOpacity>
 
-    {/*  Player */}
-      {/* Times */}
-      <View className="flex-row justify-between">
-        <Text>03:24</Text>
-        <Text>13:14</Text>
+      <View className="flex-1">
+        {/* Footer: Player */}
+        <View className="p-5 mt-auto gap-5">
+          <View className="flex-row justify-between">
+            <MaterialIcons name="airplay" size={24} color="#3A3937" />
+            <MaterialCommunityIcons
+              name="cog-outline"
+              size={24}
+              color="#3A3937"
+            />
+          </View>
+          {/*  Player */}
+
+
+          {/* Times */}
+          <View className="flex-row justify-between">
+            <Text>03:24</Text>
+            <Text>13:14</Text>
+          </View>
+        </View>
       </View>
 
     </SafeAreaView>
