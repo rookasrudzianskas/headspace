@@ -42,6 +42,14 @@ export default function MeditationDetails() {
       <TouchableOpacity className="bg-zinc-800 self-center w-20 aspect-square rounded-full items-center justify-center">
         <FontAwesome6 name="play" size={24} color="snow" />
       </TouchableOpacity>
+
+    {/*  Player */}
+      {/* Times */}
+      <View className="flex-row justify-between">
+        <Text>03:24</Text>
+        <Text>13:14</Text>
+      </View>
+
     </SafeAreaView>
   );
 }
