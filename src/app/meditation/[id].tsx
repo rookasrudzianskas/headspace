@@ -9,9 +9,20 @@ import {
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import {MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
+import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import audio from '@assets/meditations/audio1.mp3';
 
 export default function MeditationDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
+
+  const player = useAudioPlayer(audio);
+  const status = useAudioPlayerStatus(player);
+
+  const formatSeconds = (milliseconds: number) => {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = Math.floor((milliseconds % 60000) / 1000);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   const meditation = meditations.find((m) => m.id === Number(id));
 
@@ -22,6 +33,7 @@ export default function MeditationDetails() {
   return (
     <SafeAreaView className={'bg-orange-400 flex-1'}>
       {/* Header */}
+      <View className="flex-1">
       <View className={'flex-row items-center justify-between p-10'}>
         <AntDesign name="infocirlceo" size={24} color="black" />
         <View className="bg-zinc-800 p-2 rounded-md">
@@ -39,10 +51,17 @@ export default function MeditationDetails() {
       <Text className="text-3xl mt-20 text-center text-zinc-800 font-semibold">
         {meditation?.title}
       </Text>
+      </View>
 
     {/*  Play pause button */}
-      <TouchableOpacity className="bg-zinc-800 self-center w-20 aspect-square rounded-full items-center justify-center">
-        <FontAwesome6 name="play" size={24} color="snow" />
+      <TouchableOpacity
+        onPress={() => (player.playing ? player.pause() : player.play())}
+        className="bg-zinc-800 self-center w-20 aspect-square rounded-full items-center justify-center">
+        <FontAwesome6
+          name={status.playing ? 'pause' : 'play'}
+          size={24}
+          color="snow"
+        />
       </TouchableOpacity>
 
       <View className="flex-1">
@@ -62,8 +81,10 @@ export default function MeditationDetails() {
             style={{ width: '100%', height: 3 }}
             minimumValue={0}
             maximumValue={1}
-            value={0.5}
-            onSlidingComplete={(value) => console.log(value)}
+            value={status.currentTime / status.duration}
+            onSlidingComplete={(value) => {
+              player.seekTo(value * status.duration)
+            }}
             minimumTrackTintColor="#3A3937"
             maximumTrackTintColor="#3A393755"
             thumbTintColor="#3A3937"
@@ -71,8 +92,8 @@ export default function MeditationDetails() {
 
           {/* Times */}
           <View className="flex-row justify-between">
-            <Text>03:24</Text>
-            <Text>13:14</Text>
+            <Text>{formatSeconds(status.currentTime)}</Text>
+            <Text>{formatSeconds(status.duration)}</Text>
           </View>
         </View>
       </View>
