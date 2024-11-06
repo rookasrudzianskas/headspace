@@ -8,6 +8,7 @@ import {
 } from 'react-native-safe-area-context';
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import {MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
+import Slider from "@react-native-community/slider";
 
 export default function MeditationDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -57,6 +58,16 @@ export default function MeditationDetails() {
           </View>
           {/*  Player */}
 
+          <Slider
+            style={{ width: '100%', height: 3 }}
+            minimumValue={0}
+            maximumValue={1}
+            value={0.5}
+            onSlidingComplete={(value) => console.log(value)}
+            minimumTrackTintColor="#3A3937"
+            maximumTrackTintColor="#3A393755"
+            thumbTintColor="#3A3937"
+          />
 
           {/* Times */}
           <View className="flex-row justify-between">
