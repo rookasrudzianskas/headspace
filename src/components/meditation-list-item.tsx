@@ -1,13 +1,16 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, StyleSheet, Image} from 'react-native';
+import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Meditation} from "@/types";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import {useRouter} from "expo-router";
 
 const MeditationListItem = ({meditation}: {meditation: Meditation}) => {
+  const router = useRouter();
+
   return (
-    <View className="p-5 border-2 border-gray-300 rounded-2xl">
+    <TouchableOpacity activeOpacity={0.7} onPress={() => router.push(`/meditation/${meditation.id}`)} className="p-5 border-2 border-gray-300 rounded-2xl">
       <View className="flex-row items-center gap-5">
         <View className="bg-green-700 p-2 rounded-full">
           <FontAwesome name="check" size={16} color="white" />
@@ -30,7 +33,7 @@ const MeditationListItem = ({meditation}: {meditation: Meditation}) => {
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
