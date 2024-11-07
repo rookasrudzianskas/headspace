@@ -11,6 +11,7 @@ import {MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import audio from '@assets/meditations/audio1.mp3';
+import AnimatedBackground from "@/components/animated-background";
 
 export default function MeditationDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -32,6 +33,7 @@ export default function MeditationDetails() {
 
   return (
     <SafeAreaView className={'bg-orange-400 flex-1'}>
+      <AnimatedBackground />
       {/* Header */}
       <View className="flex-1">
       <View className={'flex-row items-center justify-between p-10'}>
