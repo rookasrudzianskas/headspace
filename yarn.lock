@@ -1651,6 +1651,11 @@
   dependencies:
     web-streams-polyfill "^3.1.1"
 
+"@revenuecat/purchases-typescript-internal@13.7.0":
+  version "13.7.0"
+  resolved "https://registry.yarnpkg.com/@revenuecat/purchases-typescript-internal/-/purchases-typescript-internal-13.7.0.tgz#d88c79019ad823f964bc81ead9afb5cc1df72932"
+  integrity sha512-a72zXdG2UAAG8ZmnlQGgzl7a5ujkZvc+4bY3jxnr8K2oUjbrr6A0MtLIoC2CaRj/dC2lLPaRQlEPu2VD1KPJAw==
+
 "@segment/loosely-validate-event@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@segment/loosely-validate-event/-/loosely-validate-event-2.0.0.tgz#87dfc979e5b4e7b82c5f1d8b722dfd5d77644681"
@@ -5245,6 +5250,21 @@ react-native-helmet-async@2.0.4:
     invariant "^2.2.4"
     react-fast-compare "^3.2.2"
     shallowequal "^1.1.0"
+
+react-native-purchases-ui@^8.2.5:
+  version "8.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-purchases-ui/-/react-native-purchases-ui-8.2.5.tgz#87e2a57a8ae08aefa7035bbcf407a2d8686a5cda"
+  integrity sha512-2phMAJXT7Y+h9P5rThBBjiZh9gCTkM7zT+fmne4jlYH23I4rw9FtX0i1aYj/qqTGCcZAmY+jyuqCv2meud6rOA==
+  dependencies:
+    "@revenuecat/purchases-typescript-internal" "13.7.0"
+    react-native-purchases "8.2.5"
+
+react-native-purchases@8.2.5, react-native-purchases@^8.2.5:
+  version "8.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-8.2.5.tgz#4492e41198ab390b1bcae7beb5384a96af3a6bc6"
+  integrity sha512-rARIcSdiJFtzifgDP3F3DBxZkqkUIke+SfVJEwj4drvtks8xgCx848bh/rzDBr6V9HZFXqSPiHhl4YD4WS3WcQ==
+  dependencies:
+    "@revenuecat/purchases-typescript-internal" "13.7.0"
 
 react-native-reanimated@~3.16.1:
   version "3.16.1"
